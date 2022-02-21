@@ -12,6 +12,8 @@ import Slide from '@material-ui/core/Slide';
 import { makeStyles } from '@material-ui/core/styles';
 import SaveIcon from '@material-ui/icons/Save';
 
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+
 import { ENTITY_TYPE_HOME } from '../dataProvider/documents';
 import { HomePageCreateButton, HomePageEditButton } from './HomePageButton';
 import {
@@ -21,6 +23,15 @@ import {
 } from '../ui';
 import { useUserContext } from '../userContexts';
 import { useMarkdownContent } from '../documentation';
+import { Home } from '../staticContents/Home';
+import { MemberAnnounce } from '../staticContents/MemberAnnounce';
+import { ProcessAnnounce } from '../staticContents/ProcessAnnounce';
+import { ApiAnnounce } from '../staticContents/ApiAnnounce';
+import { GuideOpenAPI } from '../staticContents/GuideOpenAPI';
+import { GuideApiKey } from '../staticContents/GuideApiKey';
+import { GuideOAuth } from '../staticContents/GuideOAuth';
+import { GuideSignature } from '../staticContents/GuideSignature';
+import { GuideJWE } from '../staticContents/GuideJWE';
 
 /**
  * This component is responsible for fetching and displaying an home page content.
@@ -70,6 +81,7 @@ export const HomePageContent = props => {
         );
     }
 
+    /*
     return (
         <div className={classes.root}>
             <MarkdownView
@@ -100,8 +112,69 @@ export const HomePageContent = props => {
                 </>
             ) : null}
         </div>
+      );
+     */
+    return (
+        <Router>
+            {/*Home*/}
+            <Route path="/" exact={true} component={Home} />
+            {/*Main Tap*/}
+            <Route path="/memberAnnounce" component={MemberAnnounce} />
+            <Route path="/processAnnounce" component={ProcessAnnounce} />
+            <Route path="/apiAnnounce" component={ApiAnnounce} />
+            {/*API Guide*/}
+            <Route path="/guideOpenAPI" component={GuideOpenAPI} />
+            <Route path="/guideApiKey" component={GuideApiKey} />
+            <Route path="/guideOAuth" component={GuideOAuth} />
+            <Route path="/guideSignature" component={GuideSignature} />
+            <Route path="/guideJWE" component={GuideJWE} />
+        </Router>
+        /*
+        <Router>
+            <div>
+                <nav>
+                    <ul>
+                        <li>
+                            <Link to="/">Home</Link>
+                        </li>
+                        <li>
+                            <Link to="/about">About</Link>
+                        </li>
+                        <li>
+                            <Link to="/users">Users</Link>
+                        </li>
+                    </ul>
+                </nav>
+                <Switch>
+                    <Route path="/about">
+                        <About />
+                    </Route>
+                    <Route path="/users">
+                        <Users />
+                    </Route>
+                    <Route path="/">
+                        <Home />
+                    </Route>
+                </Switch>
+            </div>
+        </Router>
+         */
     );
 };
+
+/*
+function Home() {
+    return <h2>안녕하세요.</h2>;
+}
+
+function About() {
+    return <h2>About</h2>;
+}
+
+function Users() {
+    return <h2>Users</h2>;
+}
+*/
 
 const HomePageContentEditor = ({
     initialValue,

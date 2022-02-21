@@ -36,7 +36,7 @@ export const AppBar = ({
         <HideOnScroll>
             <MuiAppBar
                 className={className}
-                color="#FFFFFF"
+                // color="#ffffff" // 컴파일 에러 임시조치
                 elevation={2}
                 {...rest}
             >

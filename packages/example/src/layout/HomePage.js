@@ -2,7 +2,8 @@ import React from 'react';
 import { HomePageContent } from 'layer7-apihub';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { ContentLogo, Footer } from '../ui';
+// import { ContentLogo, Footer } from '../ui';
+import { Footer } from '../ui';
 
 export const HomePage = () => {
     const classes = useStyles();
@@ -11,7 +12,8 @@ export const HomePage = () => {
         <>
             <div className={classes.root}>
                 <HomePageContent className={classes.markdown} />
-                <ContentLogo className={classes.logo} />
+                {/*로고 주석 처리*/}
+                {/*<ContentLogo className={classes.logo} />*/}
             </div>
             <Footer />
         </>
